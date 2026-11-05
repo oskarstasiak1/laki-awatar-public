@@ -14,7 +14,7 @@ Otwórz `http://localhost:8000` i kliknij **Odtwórz test**. Dźwięk wymaga int
 
 - Portret w WebGL, subtelne ruchy twarzy oraz animacja ust i żuchwy.
 - Polskie zdanie „Cześć, jestem Laki. Jak mogę Ci pomóc?” wraz z czasami 50 głosek.
-- Odtwórz, pauza, wznów, stop i zmiana tempa bez utraty synchronizacji.
+- Odtwórz, pauza, wznów, stop i zmiana tempa bez utraty synchronizacji. Usta wyprzedzają dźwięk o ok. 40 ms, a po pauzie płynnie wracają do spoczynku.
 - Awaryjny nieruchomy portret, gdy WebGL jest niedostępny.
 - Panel interfejsu z opcjonalnym adapterem `/health`, `/status`, `/chat`.
 
@@ -29,7 +29,6 @@ Portret jest animowaną powierzchnią 2.5D, a nie modelem 3D. Synchronizacja gł
 - `dist/media/laki-welcome.wav` i `.json` — nagranie i czasy głosek.
 - `tools/build_speech_demo.py` — odtwarzalna generacja pary WAV/JSON za pomocą Piper, przy użyciu zewnętrznego modelu głosu.
 - `dist/app.js` — interfejs oraz adapter API.
-- `dist/presence.js` — wcześniejsza eksperymentalna twarz proceduralna (nie jest obecnie ładowana).
 
 ## Pochodzenie i licencje
 
