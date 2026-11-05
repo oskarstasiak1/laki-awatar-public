@@ -1,0 +1,158 @@
+
+
+
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #06070a;
+    color: #dde4ea;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  canvas {
+    display: block;
+  }
+}
+
+@layer components {
+  /* Instrument panel: brushed dark glass with a single hairline and a real
+     top-edge highlight, rather than an outer neon halo. */
+  .panel {
+    background: linear-gradient(
+      180deg,
+      rgba(28, 33, 40, 0.72) 0%,
+      rgba(14, 17, 21, 0.78) 100%
+    );
+    border: 1px solid rgba(151, 178, 199, 0.13);
+    border-radius: 6px;
+    backdrop-filter: blur(14px) saturate(120%);
+    box-shadow:
+      inset 0 1px 0 rgba(190, 214, 230, 0.09),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+      0 12px 32px -12px rgba(0, 0, 0, 0.9);
+  }
+
+  .panel-inset {
+    background: rgba(6, 8, 11, 0.6);
+    border: 1px solid rgba(151, 178, 199, 0.08);
+    border-radius: 4px;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Etched label text — the small caps used on real instrument faces. */
+  .etch {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.625rem;
+    line-height: 0.875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(221, 228, 234, 0.42);
+  }
+
+  .readout {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+    color: rgba(221, 228, 234, 0.9);
+  }
+
+  /* Corner registration marks on the viewport frame. */
+  .frame-corner {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-color: rgba(151, 178, 199, 0.22);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  /* Backlight behind the reactor — physical bounce light, not a glow filter. */
+  .backlight {
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(132, 182, 214, 0.16) 0%,
+      rgba(77, 120, 145, 0.06) 32%,
+      transparent 62%
+    );
+  }
+
+  .vignette {
+    background: radial-gradient(
+      ellipse 110% 85% at 50% 45%,
+      transparent 40%,
+      rgba(3, 4, 6, 0.55) 78%,
+      rgba(3, 4, 6, 0.9) 100%
+    );
+  }
+
+  /* Display artifacts: fine scanlines + static grain, both very low contrast.
+     These read as "camera pointed at a screen" rather than as decoration. */
+  .scanlines {
+    background: repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.018) 0px,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+
+  @keyframes lamp-breathe {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.45;
+    }
+  }
+
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(151, 178, 199, 0.18);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(151, 178, 199, 0.3);
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 1px solid rgba(132, 182, 214, 0.7);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
