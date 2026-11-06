@@ -1,6 +1,6 @@
 # LAKI — awatar holograficzny
 
-Prywatny projekt awatara LAKI. Aktualny prototyp 2.5D wyświetla niebiesko-bursztynową twarz holograficzną i synchronizuje ruch ust z polskim nagraniem testowym.
+Projekt awatara LAKI. Aktualny prototyp 2.5D wyświetla niebiesko-bursztynową twarz holograficzną i synchronizuje ruch ust z polskim nagraniem testowym.
 
 ## Uruchomienie
 
